@@ -1,6 +1,6 @@
 {
   "name": "@thisisbarney/dynamic-scatterplot-layer",
-  "version": "1.0.4",
+  "version": "0.0.0-development",
   "description": "a dynamic scatterplot layer, animating points",
   "main": "lib/index.js",
   "files": [
@@ -12,7 +12,8 @@
   "scripts": {
     "prepublish": "node_modules/.bin/babel src --out-dir lib",
     "go": "yarn publish --access=public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No test specified\" && exit 0",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "scatterplot",
@@ -46,5 +47,9 @@
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
     "semantic-release": "^15.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThisIsBarney/dynamic-scatterplot-layer.git"
   }
 }
