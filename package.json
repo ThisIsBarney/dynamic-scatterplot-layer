@@ -2,7 +2,6 @@
   "name": "@thisisbarney/dynamic-scatterplot-layer",
   "version": "0.0.1",
   "description": "a dynamic scatterplot layer, animating points",
-  "licenses": [{"license": "ISC"}],
   "main": "lib/index.js",
   "files": [
     "lib/index.js",
