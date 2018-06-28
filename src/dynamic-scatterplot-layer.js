@@ -18,6 +18,7 @@ const defaultProps = {
   maxSpeed: Number.MAX_SAFE_INTEGER,
   maxDistance: Number.MAX_SAFE_INTEGER,
   zoom: 1,
+  fadeInTime: Number.MAX_SAFE_INTEGER,
 
   getPosition: x => x.position,
   getPath: x => x.path,
@@ -88,6 +89,7 @@ export default class DynamicScatterPlotLayer extends Layer {
       maxSpeed,
       maxDistance,
       zoom,
+      fadeInTime,
     } = this.props;
 
     this.state.model.render(Object.assign({}, uniforms, {
@@ -100,6 +102,7 @@ export default class DynamicScatterPlotLayer extends Layer {
       maxSpeed,
       maxDistance,
       zoom,
+      fadeInTime,
     }));
   }
 

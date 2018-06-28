@@ -21,6 +21,7 @@ uniform float currentTime;
 uniform float maxSpeed;
 uniform float maxDistance;
 uniform float zoom;
+uniform float fadeInTime;
 
 varying vec4 vColor;
 varying vec2 unitPosition;
@@ -61,7 +62,9 @@ void main(void) {
   vec3 center = project_position(mix(startCenter, endCenter, currentPosition));
 
   // vTime to pass to fragment shader
-  vTime = currentPosition;
+  float currentZ = mix(startTime, endTime, currentPosition);
+  vTime = 1.0 - (currentTime - currentZ) / fadeInTime;
+//  vTime = currentPosition;
 
   // get the final gl position
   vec3 vertex = positions * outerRadiusPixels;

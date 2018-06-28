@@ -22,14 +22,17 @@ void main(void) {
 
   if (invalid > 0.0) {
     discard;
-  } if (vTime < 0.0) {
+  } 
+  if (vTime < 0.0) {
     // gl_FragColor = vec4(1., 0., 0., 1.);
     discard;
   } else if (vTime >= 1.0) {
     // gl_FragColor = vec4(0., 1., 0., 1.);
-    discard;
+    gl_FragColor = vec4(vColor.rgb, max(0.0, min(1.0, vColor.a * (vTime - 1.0))));
+//    discard;
   } else {
-    gl_FragColor = vColor;
+    gl_FragColor = vec4(vColor.rgb, max(0.0, min(1.0, vColor.a * vTime)));
+    // gl_FragColor = vColor;
     // gl_FragColor = vec4(vColor.rgb, vColor.a * (1.0 - distToCenter));
   }
 
