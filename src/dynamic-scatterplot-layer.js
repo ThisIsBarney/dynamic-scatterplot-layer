@@ -61,6 +61,10 @@ export default class DynamicScatterPlotLayer extends Layer {
         type: GL.UNSIGNED_BYTE,
         update: this.calculatePickingColors,
       },
+      instanceIsLastSegment: {
+        size: 1,
+        update: this.calculateLastSegment,
+      },
     });
   }
 
@@ -202,6 +206,22 @@ export default class DynamicScatterPlotLayer extends Layer {
         value[i++] = pickingColor[0];
         value[i++] = pickingColor[1];
         value[i++] = pickingColor[2];
+      }
+    });
+  }
+
+  calculateLastSegment(attribute) {
+    const { paths } = this.state;
+    const { value } = attribute;
+
+    let i = 0;
+    paths.forEach(path => {
+      for (let ptIndex = 0; ptIndex < path.length; ptIndex++) {
+        if (ptIndex === path.length - 1) {
+          value[i++] = 1;
+        } else {
+          value[i++] = 0;
+        }
       }
     });
   }

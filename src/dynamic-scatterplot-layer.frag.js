@@ -29,7 +29,7 @@ void main(void) {
     discard;
   } else if (vTime > 1.0) {
     // gl_FragColor = vec4(0., 1., 0., 1.);
-    if (vFadeIn < 0.0 || vFadeIn > 1.0) {
+    if (vFadeIn <= 0.0 || vFadeIn > 1.0) {
         discard;
     }
     gl_FragColor = vec4(vColor.rgb, max(0.0, min(1.0, vColor.a * vFadeIn)));

@@ -10,6 +10,7 @@ attribute vec3 instanceEndPositions;
 attribute float instanceRadius;
 attribute vec4 instanceColors;
 attribute vec3 instancePickingColors;
+attribute float instanceIsLastSegment;
 
 uniform float opacity;
 uniform float radiusScale;
@@ -64,7 +65,10 @@ void main(void) {
 
   // vTime to pass to fragment shader
   vTime = currentPosition;
-  vFadeIn = 1.0 - (currentTime - endTime) / fadeInTime;
+  vFadeIn = 0.0;
+  if (instanceIsLastSegment > 0.0) {
+    vFadeIn = 1.0 - (currentTime - endTime) / fadeInTime;
+  }
 
   // get the final gl position
   vec3 vertex = positions * outerRadiusPixels;
