@@ -26,7 +26,7 @@ void main(void) {
   if (vTime < 0.0) {
     // gl_FragColor = vec4(1., 0., 0., 1.);
     discard;
-  } else if (vTime >= 1.0) {
+  } else if (vTime > 1.0) {
     // gl_FragColor = vec4(0., 1., 0., 1.);
     gl_FragColor = vec4(vColor.rgb, max(0.0, min(1.0, vColor.a * (vTime - 1.0))));
 //    discard;
