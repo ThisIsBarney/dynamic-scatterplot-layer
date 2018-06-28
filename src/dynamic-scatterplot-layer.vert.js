@@ -28,6 +28,7 @@ varying vec2 unitPosition;
 varying float innerUnitRadius;
 varying float vTime;
 varying float invalid;
+varying float vFadeIn;
 
 void main(void) {
   // Multiply out radius and clamp to limits
@@ -59,12 +60,11 @@ void main(void) {
 
   // get the current position center
   float currentPosition = (currentTime - startTime) / elapse;
-  vec3 center = project_position(mix(startCenter, endCenter, currentPosition));
+  vec3 center = project_position(mix(startCenter, endCenter, max(1.0, currentPosition)));
 
   // vTime to pass to fragment shader
-  float currentZ = mix(startTime, endTime, currentPosition);
-  vTime = 1.0 - (currentTime - currentZ) / fadeInTime;
-//  vTime = currentPosition;
+  vTime = currentPosition;
+  vFadeIn = 1.0 - (currentTime - endTime) / fadeInTime;
 
   // get the final gl position
   vec3 vertex = positions * outerRadiusPixels;
