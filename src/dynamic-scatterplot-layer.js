@@ -216,8 +216,8 @@ export default class DynamicScatterPlotLayer extends Layer {
 
     let i = 0;
     paths.forEach(path => {
-      for (let ptIndex = 0; ptIndex < path.length; ptIndex++) {
-        if (ptIndex === path.length - 1) {
+      for (let ptIndex = 0; ptIndex < path.length - 1; ptIndex++) {
+        if (ptIndex === path.length - 2) {
           value[i++] = 1;
         } else {
           value[i++] = 0;
