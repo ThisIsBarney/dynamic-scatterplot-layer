@@ -19,6 +19,8 @@ uniform float outline;
 uniform float strokeWidth;
 uniform float currentTime;
 uniform float maxSpeed;
+uniform float maxDistance;
+uniform float zoom;
 
 varying vec4 vColor;
 varying vec2 unitPosition;
@@ -70,7 +72,10 @@ void main(void) {
   
   // mark too fast points as invalid
   invalid = 0.0;
-  if (distance(project_position(startPos), project_position(endPos)) / elapse > maxSpeed) {
+  if (distance(project_position(startPos), project_position(endPos)) / elapse > maxSpeed * zoom) {
+    invalid = 1.0;
+  }
+  if (distance(project_position(startPos), project_position(endPos)) > maxDistance * zoom) {
     invalid = 1.0;
   }
   

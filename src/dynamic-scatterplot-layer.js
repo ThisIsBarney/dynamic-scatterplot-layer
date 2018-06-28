@@ -15,7 +15,9 @@ const defaultProps = {
   strokeWidth: 1,
   outline: false,
   currentTime: 0,
-  maxSpeed: 999999,
+  maxSpeed: Number.MAX_SAFE_INTEGER,
+  maxDistance: Number.MAX_SAFE_INTEGER,
+  zoom: 1,
 
   getPosition: x => x.position,
   getPath: x => x.path,
@@ -77,9 +79,16 @@ export default class DynamicScatterPlotLayer extends Layer {
 
   draw({ uniforms }) {
     const {
-      radiusScale, radiusMinPixels, radiusMaxPixels, outline, strokeWidth,
+      radiusScale,
+      radiusMinPixels,
+      radiusMaxPixels,
+      outline,
+      strokeWidth,
+      currentTime,
+      maxSpeed,
+      maxDistance,
+      zoom,
     } = this.props;
-    const { currentTime, maxSpeed } = this.props;
 
     this.state.model.render(Object.assign({}, uniforms, {
       outline: outline ? 1 : 0,
@@ -89,6 +98,8 @@ export default class DynamicScatterPlotLayer extends Layer {
       radiusMaxPixels,
       currentTime,
       maxSpeed,
+      maxDistance,
+      zoom,
     }));
   }
 
