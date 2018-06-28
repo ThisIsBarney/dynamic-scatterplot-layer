@@ -60,7 +60,7 @@ void main(void) {
 
   // get the current position center
   float currentPosition = (currentTime - startTime) / elapse;
-  vec3 center = project_position(mix(startCenter, endCenter, max(1.0, currentPosition)));
+  vec3 center = project_position(mix(startCenter, endCenter, min(1.0, currentPosition)));
 
   // vTime to pass to fragment shader
   vTime = currentPosition;
